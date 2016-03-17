@@ -38,7 +38,7 @@
       <header>
         <h2>另一篇文章的一级标题</h2>
         <h3>文章二级标题</h3>
-        <p>by Brandon, <time datetime="2016-03-15">2015年3月15日</time></p>
+        <p>by Brandon, <time datetime="2016-03-17">2015年3月17日</time></p>
       </header>
 
       <p>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，换行了<br>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，换行了<br>这是一个很长很长的段落，这是一个很长很长的段落，<a href="http://ife.baidu.com/">这里有一个链接链接到http://ife.baidu.com</a>这是一个很长很长的段落，这是一个很长很长的段落，<b>这里有个粗体字</b>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落。</p>
@@ -97,7 +97,7 @@
       <header>
         <h2>最后一篇文章一级标题</h2>
         <h3>文章二级标题</h3>
-        <p>by Brandon, <time datetime="2016-03-15T21:40+8:00" pubdate="pubdate">2015年3月15日</time></p>
+        <p>by Brandon, <time datetime="2016-03-17">2015年3月17日</time></p>
       </header>
 
       <ol>
@@ -144,13 +144,39 @@
 
     <aside>
       <h2>这里以后是一个侧栏，这是侧栏的标题</h2>
-      <h3>侧栏注册窗口标题</h3>
-      <p>请输入邮箱地址：<textarea name="email" rows="1" cols="1" placeholder="这是一个文本输入框"></textarea></p>
-      <p>邮箱地址请按要求格式输入</p>
-      <p>请输入密码：<textarea name="password" rows="1" cols="1" placeholder="这是一个文本输入框"></textarea>请重复输入密码：<textarea name="password-confirm" rows="1" cols="1" placeholder="这是一个文本输入框"></textarea></p>
-      <p>密码为6-16位英文数字</p>
+      <form action="/register.php" method="post">
+        <h3>侧栏注册窗口标题</h3>
+        <label for="email">请输入邮箱地址：</label>
+        <input type="email" name="email" id="email" placeholder="这是一个文本输入框" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+        <p>邮箱地址请按要求格式输入</p>
+        <label for="form-pswd-1st">请输入密码：</label>
+        <input type="password" name="pswd" id="form-pswd-1st" placeholder="这是一个文本输入框" pattern="[A-Za-z0-9]{6,16}">
+        <label for="form-pswd-2nd">请重复输入密码：</label>
+        <input type="password" name="pswd" id="form-pswd-2nd" placeholder="这是一个文本输入框" pattern="[A-Za-z0-9]{6,16}">
+        <p>密码请为6-16位英文数字</p>
+        <label for="gender">性别：</label>
+        <input type="radio" name="gender" id="gender" value="male" checked>男
+        <input type="radio" name="gender" value="female">女
+        <label for="city">城市：</label>
+        <select name="city" id="city">
+          <option>北京</option>
+          <option>上海</option>
+          <option>广州</option>
+          <option>深圳</option>
+        </select>
+        <label for="hobby">爱好：</label>
+        <input type="checkbox" name="hobby" value="sport" id="hobby">运动
+        <input type="checkbox" name="hobby" value="art">艺术
+        <input type="checkbox" name="hobby" value="science">科学
+        <label for="custome">个人描述：</label>
+        <textarea name="custome" id="custome" placeholder="这是一个多行输入框，输入您的个人描述"></textarea>
 
+        <input type="submit" value="确认提交">
+      </form>
     </aside>
 
+    <footer>
+      <p><small>版权所有&copy;</small></p>
+    </footer>
   </body>
 </html>
