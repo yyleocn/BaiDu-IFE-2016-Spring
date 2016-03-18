@@ -1,0 +1,41 @@
+body{
+    padding-top:80px;
+}
+
+.navBar{
+    border-width: 0;
+    background-color: #337AB7;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.logo{
+    display: inline-block;
+    margin: 10px;
+    height:76px;
+    width: 336px;
+    background-image: url("logo.png");
+}
+
+.navList{
+    display: inline-block;
+    float:right;
+    list-style: disc;
+    margin-top: 30px;
+    margin-right: 20px;
+}
+
+.navList a:link,
+.navList a:visited{
+    color:#FFF;
+    text-decoration: none;
+}
+
+
+
+.navList li{
+    float:left;
+    margin:15px;
+}
