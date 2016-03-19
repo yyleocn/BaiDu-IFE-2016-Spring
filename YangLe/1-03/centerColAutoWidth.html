@@ -4,13 +4,20 @@
     <meta charset="UTF-8">
     <title>中间栏自适应布局</title>
     <style type="text/css">
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
         }
 
-        .content{
-            overflow: hidden;
+        .content {
+            overflow: auto;
+            /*margin: 20px;*/
         }
 
         #leftColumn {
@@ -28,8 +35,9 @@
         }
 
         #centerColumn {
-            margin: 20px 160px 0 240px;
-            overflow: auto;
+            margin-top: 20px;
+            margin-left: 240px;
+            margin-right: 160px;
             background-color: #AFA;
         }
 

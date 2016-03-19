@@ -1,38 +1,39 @@
-.content{
+.content {
     margin: 20px;
     border: 1px solid #999;
     background-color: #EEE;
 }
 
-.column{
+.column {
     border: 1px solid #999;
     background-color: #FFF;
 }
 
-.logo{
+.logo {
     width: 80px;
     height: 80px;
     margin: 20px;
     background-image: url("img/teamLogo.png");
 }
 
-#leftColumn{
+#leftColumn {
     width: 200px;
-    float:left;
+    float: left;
     margin: 20px;
 }
 
-#rightColumn{
+#rightColumn {
     width: 120px;
-    float:right;
+    float: right;
     margin: 20px;
 }
 
-#centerColumn{
-    margin: 20px 160px 0 240px ;
-    overflow: auto;
+#centerColumn {
+    margin-top: 20px;
+    margin-left: 240px;
+    margin-right: 160px;
 }
 
-#centerColumn>*{
+#centerColumn > * {
     margin: 20px;
 }

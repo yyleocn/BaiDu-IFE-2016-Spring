@@ -1,0 +1,69 @@
+.content {
+    overflow: hidden;
+}
+
+.screenFix {
+    position: fixed;
+    margin: auto;
+}
+
+.fixBox{
+    width: 400px;
+    height: 200px;
+    background-color: #CCC;
+}
+
+.boxOne {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.boxTwo {
+    left: 0;
+    top: 0;
+}
+.boxThree {
+    right: 0;
+    bottom: 0;
+}
+
+
+/*-----    table center    -----*/
+.tableCenter{
+    display: table;
+}
+
+.tableCenter .tableCell{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.tableCenter .tableCell .centerBox{
+    margin: auto;
+    width: auto;
+    display: inline-block;
+}
+
+
+/*-----    corner box      -----*/
+.cornerLeftTop {
+    position: absolute;
+    background-color: #FC0;
+    height: 50px;
+    width: 50px;
+    top: 0;
+    left: 0;
+    border-bottom-right-radius: 100%;
+}
+
+.cornerRightBottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #FC0;
+    height: 50px;
+    width: 50px;
+    border-top-left-radius: 100%;
+}
