@@ -1,0 +1,38 @@
+.content{
+    margin: 20px;
+    border: 1px solid #999;
+    background-color: #EEE;
+}
+
+.column{
+    border: 1px solid #999;
+    background-color: #FFF;
+}
+
+.logo{
+    width: 80px;
+    height: 80px;
+    margin: 20px;
+    background-image: url("img/teamLogo.png");
+}
+
+#leftColumn{
+    width: 200px;
+    float:left;
+    margin: 20px;
+}
+
+#rightColumn{
+    width: 120px;
+    float:right;
+    margin: 20px;
+}
+
+#centerColumn{
+    margin: 20px 160px 0 240px ;
+    overflow: auto;
+}
+
+#centerColumn>*{
+    margin: 20px;
+}
