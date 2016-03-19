@@ -1,0 +1,118 @@
+body {
+    background-color: #DEDEDE;
+}
+
+
+
+/*----- bottom bar         -----*/
+.bottomBar {
+    width: 100%;
+    color: #FFF;
+    background-color: #000;
+}
+
+/*-----    nav bar         -----*/
+.navBar {
+    border-width: 0;
+    background-color: #337AB7;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+.logo {
+    display: inline-block;
+    margin: 10px;
+    height: 76px;
+    width: 336px;
+    background-image: url("logo.png");
+}
+
+.navList {
+    display: inline-block;
+    float: right;
+    list-style: disc;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    padding: 0;
+}
+
+.navList a:link,
+.navList a:visited {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.navList li {
+    float: left;
+    margin: 15px;
+}
+
+/*-----    post            -----*/
+.post {
+    background-color: #FFF;
+    border-style: outset;
+    border-width: 0 3px 3px 0;
+    border-color: #EEEEEE;
+
+    margin: 10px 20px;
+    padding: 10px 20px;
+}
+
+.post h3 {
+    border-left: 3px solid #CCCCCC;
+    padding: 10px;
+}
+
+.postUl {
+    list-style: none;
+}
+
+.customList li div {
+    display: inline-block;
+    border: 1px solid #CCCCCC;
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/*-----  table             -----*/
+.table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+}
+
+.table th,
+.table td {
+    border: 1px solid #CFCDCF;
+    padding: 5px;
+}
+
+.table th {
+    background-color: #000;
+    color: #FFF;
+}
+
+.table .tableSum {
+    font-weight: bold;
+    background-color: #CDCBCD;
+}
+
+.formTable tr td:first-child{
+    text-align: right;
+}
+
+.formTable tr td:last-child{
+    text-align: left;
+}
+
+.formTable td{
+    vertical-align: top;
+}
+
+.bglogoBlue {
+    background-color: #337AB7;
+}
