@@ -1,4 +1,5 @@
 .content {
+    margin: 10px;
     overflow: hidden;
 }
 
@@ -66,4 +67,16 @@
     height: 50px;
     width: 50px;
     border-top-left-radius: 100%;
+}
+
+/*-----   background table -----*/
+.backgroundTable{
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.backgroundTable td{
+    height: 50px;
+    border: 1px solid #BBB;
 }
