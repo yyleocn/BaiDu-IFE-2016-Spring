@@ -2,9 +2,146 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>任务六：通过HTML及CSS模拟报纸排版</title>
+    <link href="project.css" type="text/css" rel="stylesheet">
+    <link href="page.css" type="text/css" rel="stylesheet">
 </head>
 <body>
+<div class="pageBody">
+    <div class="container">
+        <div class="topBar">
+            <div class="leftBox">
+                <div class="text">ife.baidu.com</div>
+            </div>
+            <div class="rightBox">
+                <div class="text">2016.03</div>
+            </div>
+        </div>
+        <div class="slideShowBar">
+            <div class="slideShowBox">
+                <img src="img/slideShow.png" class="imageA">
+                <div class="slideCover coverLeft"></div>
+                <div class="slideCover coverRight"></div>
+            </div>
+            <div class="slideShowRight">
+                <h1 class="textA"><strong>A</strong>bout<br><strong>T</strong>echnology</h1>
+                <p class="textB">
+                    about technology about technology about technology
+                </p>
+                <p class="textC">700</p>
+                <p class="textD">3.2</p>
+                <p class="textE">CSS</p>
+                <p class="textF">csscsscsscsscss</p>
+            </div>
+        </div>
+        <div class="keyWordBar">
+            <div class="wordA">
+                <p class="wordTitle">HTML参考</p>
+                <p class="wordContent">
+                    HTML 是一种描述 Web 文档结构和语义的语言；它由元素组成，每个元素可以有一些属性。
+                    网页中的内容通过 HTML 元素标记，如img、title、p、div 等等。
+                </p>
+            </div>
+            <div class="wordB">
+                <p class="wordTitle">CSS参考</p>
+                <p class="wordContent">
+                    本页面按字母序列出了所有标准的 CSS 属性、伪类、伪元素、@规则、单位和选择器。
+                    您可以快速访问到各个词条的详细内容。
+                    在这里不仅列出了 CSS1 和 CSS2.1 的属性，
+                    还列出了 CSS3 中已标准化或已固定的属性和概念。
+                </p>
+            </div>
+            <div class="wordC">
+                <p class="wordTitle">JavaScript指南</p>
+                <p class="wordContent">
+                    JavaScript指南向您介绍如何使用JavaScript和概述。
+                    如果你想开始使用JavaScript或普通编程，请参考了解Web开发。
+                </p>
+                <p class="appendContent">
+                    What--------<span class="percent">30%</span><br>
+                    What--------<span class="percent">40%</span><br>
+                    What--------<span class="percent">30%</span>
+                </p>
+            </div>
+        </div>
+        <div class="articleBar">
+            <div class="articleLeftBox">
+                <p class="articleTitleEng">
+                    <strong>THE</strong> TECHNOLOGY OF FRONT
+                </p>
+                <p class="articleTitleChs">
+                    前端技术领域
+                </p>
+                <p class="articleContent first">
+                    你应该知道哪些知识？该指南假定你拥有如下基础背景：<br>
+                    对互联网和万维网 (WWW) 有基本的认识。熟悉超文本标记语言(HTML)。<br>
+                    一些编程经验。如果您初识编程，试试主页列出的有关 JavaScript 的教程。
+                    <img src="img/articleLeft.png">
+                </p>
+                <p class="articleContent">
+                    去哪里获得 JavaScript 的信息？MDN 上的 JavaScript 文档包括以下内容：<br>
+                    认识Web 为初学者提供信息和介绍一些关于编程和互联网的基本概念。<br>
+                    JavaScript入门 (本指导) 提供关于JavaScrip这门语言和它的目标的概述。<br>
+                    JavaScript 参考提供详细的关于JavaScript的参考资料。
+                </p>
+                <p class="articleContent">
+                    如果你刚开始学习JavaScript，请详细阅读 learning area 和 JavaScript Guide 的文章。<br>
+                    假如你对JavaScript基础有很深的了解, 你可以使用 JavaScript Reference 来了解更多关于个别对象（ individual objects）和语句的细节。<br>
+                    JavaScript 是一门跨平台、面向对象的轻量级脚本语言。 在主机环境中， JavaScript能够通过连接环境对象而实现可控制编译。<br>
+                    JavaScript内置了一个包含一系列对象的标准库，比如数组，日期，数学和一个语言元素核心集合包括操作符，流程控制符以及语句等。
+                </p>
+            </div>
+            <div class="articleRightBox">
+                <div class="articleImg">
+                    <img src="img/articleRight.png">
+                    <div class="articleImgCover">
+                        <div class="articleImgText">
+                            <span class="articleImgTag">前端技术</span>前端技术前端技术
+                        </div>
+                    </div>
+                </div>
+                <div class="articleContent">
+                    <div class="articleList">
+                        <div class="articleListItem">
+                            <div class="articleListStyle">▲</div>
+                            <div class="articleListContent">前端前端前端前端前端前端.....................<span
+                                    class="pageNum">CSS</span>
+                            </div>
+                        </div>
+                        <div class="articleListItem">
+                            <div class="articleListStyle">▲</div>
+                            <div class="articleListContent">前端前端前端前端............................<span
+                                    class="pageNum">JS</span>
+                            </div>
+                        </div>
+                        <div class="articleListItem">
+                            <div class="articleListStyle">▲</div>
+                            <div class="articleListContent">前端前端前端前端前端前端前端................<span
+                                    class="pageNum">HTML</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="articleContentBottom">
+                        <div class="bottomLeftBox">
+                            <div class="firstLetter">0</div>
+                            <div class="partA">ONE TWO<br>THREE FOUR FIVE</div>
+                            <div class="partB">hello world hello world hello world</div>
+                        </div>
+                        <div class="bottomRightBox">
+                            hello world hello world hello world
+                            hello world hello world hello world
+                            hello world hello world hello world
+                            hello world hello world hello world
+                        </div>
 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottomBar">
+            <div class="rightBox">ife.baidu.com</div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
