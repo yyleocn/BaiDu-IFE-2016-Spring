@@ -90,9 +90,9 @@ body {
     width: 641px;
 }
 
-.slideShowBar > img.imageA{
+.slideShowBar > img.imageA {
     position: absolute;
-    top:0;
+    top: 0;
     left: 0;
 }
 
@@ -182,7 +182,7 @@ body {
     margin-top: 20px;
     overflow: auto;
     height: 250px;
-    background-color: #CCC;
+    /*background-color: #CCC;*/
 }
 
 .keyWordBar .wordTitle {
@@ -217,89 +217,246 @@ body {
     margin-right: 20px;
 }
 
-.keyWordBar .appendContent{
+.keyWordBar .appendContent {
     font: normal 12px "微软雅黑";
     padding-left: 5px;
     margin-top: 20px;
     opacity: 0.7;
 }
 
-
 .keyWordBar .appendContent .percent {
-    color:#CD4A48;
+    color: #CD4A48;
     font-style: italic;
 }
 
-
 /*----- article bar                  -----*/
-.articleBar{
+.articleBar {
+    overflow: auto;
 }
 
-.articleBar > .articleLeftBox{
+.articleBar > .articleLeftBox {
     width: 415px;
-    float:left;
+    float: left;
 }
 
-.articleLeftBox > .articleTitleEng{
-    font:normal bolder 42px/21px "黑体";
-    color:#11456B;
+.articleLeftBox > .articleTitleEng {
+    font: normal bolder 42px/21px "黑体";
+    color: #11456B;
 }
 
-.articleLeftBox > .articleTitleEng > strong{
-    font:bold italic 72px "黑体";
+.articleLeftBox > .articleTitleEng > strong {
+    font: bold italic 72px "黑体";
     color: #F5E327;
 
 }
 
-.articleLeftBox > .articleTitleChs{
+.articleLeftBox > .articleTitleChs {
     font: bold 33px "黑体";
     color: #11456B;
     margin-top: 10px;
 }
 
 .articleLeftBox > .articleContent {
-    font:normal 12px "微软雅黑";
+    font: normal 12px "微软雅黑";
     color: #777;
     line-height: 16px;
     text-indent: 2em;
 }
 
-.articleLeftBox > .articleContent.first{
-    border-top:2px solid #000;
+.articleLeftBox > .articleContent.first {
+    border-top: 2px solid #000;
     padding-top: 20px;
     margin-top: 10px;
     text-indent: 0;
 }
 
 .articleLeftBox > .articleContent.first:first-letter {
-    font:normal 70px/70px "微软雅黑";
-    color:#F5E327;
+    font: normal 70px/70px "微软雅黑";
+    color: #F5E327;
     float: left;
-    margin-right:10px;
+    margin-right: 10px;
 }
 
-.articleLeftBox > .articleContent img{
+.articleLeftBox > .articleContent img {
     float: right;
     margin: 10px 0 10px 10px;
 }
 
-.articleBar > .articleRightBox{
+.articleBar > .articleRightBox {
     width: 458px;
-    float:right;
+    float: right;
 }
 
-.articleRightBox > .articleImg{
+.articleRightBox > .articleImg {
     position: relative;
     height: 257px;
     width: 100%;
 }
 
-.articleImg > .articleImgBottomBar{
+.articleRightBox > .articleImg > .articleImgCover {
     height: 61px;
     width: 100%;
     position: absolute;
-    bottom:0;
+    bottom: 0;
     left: 0;
     background-color: #333;
     opacity: 0.6;
+}
+
+.articleImgCover > .articleImgText {
+    height: 44px;
+    width: 300px;
+    position: absolute;
+    left: 30px;
+    bottom: 8px;
+    border-left: 3px solid #72B16A;
+
+    font: oblique 12px "微软雅黑";
+    /*letter-spacing: 0.4em;*/
+    color: #72B16A;
+    padding-top: 3px;
+}
+
+.articleImgText > .articleImgTag {
+    font: normal 26px "微软雅黑";
+    color: #FFFFFF;
+    margin-right: 10px;
+    margin-left: 15px;
+}
+
+.articleRightBox > .articleContent {
+    background-color: #EEEED6;
+    width: 100%;
+    height: 318px;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.articleList{
+    margin: 30px 10px 30px 30px;
+}
+
+.articleList > .articleListItem{
+    width: 100%;
+    overflow: auto;
+    margin-bottom: 20px;
+}
+
+.articleListItem > .articleListStyle{
+    margin-top: 3px;
+    font: normal 10px "宋体";
+    color: #11446B;
+    margin-right: 5px;
+    width: 20px;
+    float: left;
+}
+
+.articleListItem > .articleListContent{
+    margin-left: 15px;
+    font: normal 16px "宋体";
+    color: #5A5B5B;
+    text-align: justify;
+    text-justify: auto; /*ie6-8*/
+    text-align-last: justify; /* ie9*/
+    -moz-text-align-last: justify; /*ff*/
+    -webkit-text-align-last: justify; /*chrome 20+*/
+}
+
+.articleListItem > .articleListContent >.pageNum{
+    font: italic 12px "宋体";
+}
+
+.articleContentBottom{
+    overflow: auto;
+}
+
+.articleContentBottom > .bottomLeftBox{
+    float: left;
+    height: 160px;
+    width: 260px;
+    padding: 37px 0;
+    background-color: #D65D5D;
+    color:#FFF;
+}
+
+.bottomLeftBox > .firstLetter{
+    float: left;
+    font: normal 110px "微软雅黑";
+    line-height: 86px;
+    margin-left: 10px;
+    width: 70px;
+    border-right: 2px solid #FFF;
+}
+
+.bottomLeftBox > .partA,
+.bottomLeftBox > .partB{
+    float:right;
+    margin-right: 10px;
+    width: 160px;
+}
+
+
+.bottomLeftBox > .partA{
+    font:italic 21px "黑体";
+    line-height: 24px;
+}
+.bottomLeftBox > .partB{
+    font:normal 12px "黑体";
+}
+
+.articleContentBottom > .bottomRightBox{
+    float:right;
+    width: 198px;
+    height: 160px;
+    overflow: hidden;
+    padding: 20px 10px;
+
+    font: italic 14px "黑体";
+    line-height: 16px;
+}
+
+/*.bottomRightBox > .firstLetter,*/
+/*.bottomRightBox > .lastLetter{*/
+    /*font:normal 72px "黑体";*/
+    /*color: #D45D5C;*/
+/*}*/
+
+
+/*.bottomRightBox > .firstLetter{*/
+    /*margin-left: -30px;*/
+/*}*/
+
+.articleContentBottom > .bottomRightBox:before{
+    content: "“";
+    float: left;
+    margin-left: -40px;
+    margin-top:0;
+    margin-right: 10px;
+    height: 1px;
+    font:normal 72px/48px "黑体";
+    color: #D45D5C;
+}
+.articleContentBottom > .bottomRightBox:after{
+    content: "”";
+    float: right;
+    margin-right: -25px;
+    font:normal 72px/72px "黑体";
+    color: #D45D5C;
+}
+
+.bottomBar{
+    position: relative;
+    margin-top: 30px;
+    width: 100%;
+    overflow: auto;
+    border-top: 1px solid #938E8C;
+    height: 30px;
+}
+
+.bottomBar > .rightBox {
+    position: absolute;
+    right: 0;
+    top:10px;
+    font: normal 12px "黑体";
+    color: #D45D5C;
 }
