@@ -12,13 +12,21 @@
 
 <script type="text/javascript">
 
-    (function() {
+    function addEvent(obj$, event$, fn$) {
+        (obj$.attachEvent) ?//ie
+                obj$.attachEvent('on' + event$, function () {
+                    fn$.call(obj$);
+                }) :
+                obj$.addEventListener(event$, fn$, 0);
+    }
+
+    (function () {
         var buttonObj = document.querySelectorAll('button#button')[0];
         var displayObj = document.querySelectorAll('span#aqi-display')[0];
         var inputObj = document.querySelectorAll('input#aqi-input')[0];
-        buttonObj.onclick = function(){
+        addEvent( buttonObj, 'click', function(){
             displayObj.innerHTML = inputObj.value;
-        }
+        } )
     })();
 
 </script>
