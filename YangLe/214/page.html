@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+</head>
+<body>
+
+<h3>污染城市列表</h3>
+<ul id="aqi-list">
+    <!--
+        <li>第一名：福州（样例），10</li>
+          <li>第二名：福州（样例），10</li> -->
+</ul>
+
+<script type="text/javascript">
+
+    var aqiData = [
+        ["北京", 90],
+        ["海口", 80],
+        ["郑州", 50],
+        ["上海", 50],
+        ["福州", 10],
+        ["厦门", 70],
+        ["天津", 61],
+        ["武汉", 70],
+        ["太原", 70],
+        ["广州", 50],
+        ["成都", 90],
+        ["西安", 100]
+    ];
+
+    (function () {
+        var processData = aqiData.filter(function (elem$) {
+            return elem$[1] > 60;
+        });
+        processData.sort(function (elemA$, elemB$) {
+            return elemA$[1] - elemB$[1] < 0;
+        });
+        var sortRes = [];
+        processData.forEach(function (elem$, cur$, array$) {
+            if (!sortRes.length) {
+                sortRes.push({
+                    rank: 1,
+                    city: [
+                        elem$[0]
+                    ],
+                    AQI: elem$[1]
+                });
+                return undefined;
+            }
+            var lastRank = sortRes[sortRes.length - 1];
+
+            if (elem$[1] === lastRank.AQI) {
+                lastRank.city.push(elem$[0]);
+                return undefined;
+            }
+            sortRes.push({
+                rank: cur$ + 1,
+                city: [
+                    elem$[0]
+                ],
+                AQI: elem$[1]
+            })
+        });
+        sortRes.forEach(function (elem$, cur$, array$) {
+            var appendNode = document.createElement('li');
+            appendNode.innerHTML = (
+                            elem$.city.length > 1 ? '并列' : ''
+                    ) + '第' + elem$.rank + '名：' + elem$.city.join('、') + '，' + elem$.AQI;
+            document.querySelectorAll('ul#aqi-list')[0].appendChild(appendNode)
+        });
+    })();
+
+</script>
+</body>
+</html>
