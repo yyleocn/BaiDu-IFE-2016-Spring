@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            box-sizing: border-box;
+        }
+
+        .colorBox {
+            float: left;
+            height: 30px;
+            width: 1%;
+        }
+
+        .container {
+            margin: 10px auto;
+            border: 1px solid #000;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container"></div>
+<script type="text/javascript">
+    function zeroFillHex(num$, digits$) {
+        var s = num$.toString(16);
+        while (s.length < digits$)
+            s = "0" + s;
+        return s;
+    }
+    var insertPos = document.querySelector('div.container');
+    var maxGreen = 130;
+    var maxNumber = 500;
+    var light = 1.8;
+    for (var loopI$ = 0; loopI$ < maxNumber; loopI$++) {
+        var colorBox = document.createElement('div');
+        var red = undefined;
+        var green = undefined;
+        if (loopI$ < maxGreen * 2) {
+            red = parseInt((loopI$ > maxGreen ? maxGreen : loopI$) * light);
+            green = parseInt((loopI$ > maxGreen ? maxGreen * 2 - loopI$ : maxGreen) * light);
+        } else {
+            red = parseInt((maxGreen - (loopI$ - maxGreen * 2)*maxGreen/(maxNumber-maxGreen*2)*0.75)*light);
+            green = 0;
+        }
+        var colorCode = ('#' + zeroFillHex(red, 2) + zeroFillHex(green, 2) + zeroFillHex(0, 2)).toUpperCase();
+        colorBox.className = 'colorBox';
+        colorBox.style = 'background-color:' + colorCode;
+        colorBox.innerHTML = '&nbsp;';
+        insertPos.appendChild(colorBox);
+
+        console.log('' + loopI$ + ': ' + red + ',' + green);
+    }
+
+
+</script>
+</body>
+</html>
