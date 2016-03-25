@@ -11,6 +11,7 @@
     <li>上海空气质量：<b>70</b></li>
     <li>天津空气质量：<b>80</b></li>
     <li>广州空气质量：<b>50</b></li>
+    <li>郑州空气质量：<b>50</b></li>
     <li>深圳空气质量：<b>40</b></li>
     <li>福州空气质量：<b>32</b></li>
     <li>成都空气质量：<b>90</b></li>
@@ -60,11 +61,7 @@
                 console.log('城市错误');
                 return undefined
             }
-            data.push({
-                cityName: cityName,
-                AQI: parseInt(AQIStr),
-                cityNode: elem$
-            })
+            data.push([cityName, parseInt(AQIStr)])
         });
         return data;
 
@@ -76,9 +73,9 @@
      * 返回一个排序后的数组
      */
     function sortAqiData(data$) {
-        var dataCopy  = data$.slice(0);
+        var dataCopy = data$.slice(0);
         return dataCopy.sort(function (elemA$, elemB$) {
-            return elemA$.AQI - elemB$.AQI < 0;
+            return elemA$[1] < elemB$[1];
         })
     }
 
@@ -88,12 +85,43 @@
      * 格式见ul中的注释的部分
      */
     function render(data$) {
-        var insertPos =document.querySelectorAll('ul#resort')[0];
-        if(!insertPos){
+        var insertPos = document.querySelectorAll('ul#resort')[0];
+        if (!insertPos) {
+            console.log('插入错误');
             return undefined;
         }
-        data$.forEach(function(elem$){
-            insertPos.appendChild(elem$.cityNode.cloneNode(true))
+        var sortRes = [];
+        data$.forEach(function (elem$, cur$, array$) {
+            if (!sortRes.length) {
+                sortRes.push({
+                    rank: 1,
+                    city: [
+                        elem$[0]
+                    ],
+                    AQI: elem$[1]
+                });
+                return undefined;
+            }
+            var lastRank = sortRes[sortRes.length - 1];
+            if (elem$[1] === lastRank.AQI) {
+                lastRank.city.push(elem$[0]);
+                return undefined;
+            }
+            sortRes.push({
+                rank: cur$ + 1,
+                city: [
+                    elem$[0]
+                ],
+                AQI: elem$[1]
+            })
+        });
+        console.log(sortRes);
+        sortRes.forEach(function (elem$, cur$, array$) {
+            var appendNode = document.createElement('li');
+            appendNode.innerHTML = (
+                            elem$.city.length > 1 ? '并列' : ''
+                    ) + '第' + elem$.rank + '名' + elem$.city.join('、') + '空气质量：<b>' + elem$.AQI + '</b>';
+            insertPos.appendChild(appendNode);
         })
     }
 
@@ -114,10 +142,10 @@
         }
 
         var btnObj = document.querySelectorAll('button#sort-btn')[0];
-        if(!btnObj){
+        if (!btnObj) {
             return undefined;
         }
-        addEvent(btnObj,'click',btnHandle);
+        addEvent(btnObj, 'click', btnHandle);
         // 在这下面给sort-btn绑定一个点击事件，点击时触发btnHandle函数
 
     }

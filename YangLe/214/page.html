@@ -35,7 +35,7 @@
             return elem$[1] > 60;
         });
         processData.sort(function (elemA$, elemB$) {
-            return elemA$[1] - elemB$[1] < 0;
+            return elemA$[1] < elemB$[1];
         });
         var sortRes = [];
         processData.forEach(function (elem$, cur$, array$) {
