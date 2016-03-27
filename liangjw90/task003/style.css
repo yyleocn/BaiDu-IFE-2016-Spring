@@ -1,0 +1,94 @@
+/* reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', 'Lucida Grande', 'Luxi Sans', Arial, sans-serif;
+}
+
+body{height: 100%;}
+.content,.main,.sub,.aside,.sub img,.aside img{
+	border: solid 1px #999;
+}
+.main,.sub,.aside{
+	background: #eee;
+	float: left;
+}
+.content{
+	margin: 20px;
+	padding: 20px;
+	height: 100%;
+	background: #eee;
+	/* overflow: hidden; */
+}
+.sub{
+	width: 200px;
+	margin-left: -100%;
+	background: #fff;
+}
+.sub img{
+	float: left;
+	width: 80px;
+	height: 80px;
+	margin:19px;
+	vertical-align: top;
+}
+.sub span{
+	float: left;
+	width: 40px;
+	margin: 19px;
+}
+.main{
+	padding: 0;
+	border: none;
+	width: 100%;
+	height:100%;
+}
+.main-wrap{
+	padding: 10px 20px;
+	border: solid 1px #999;
+	margin: 0 142px 0 222px;
+	background: #fff;
+}
+.main p{
+	padding: 10px 0;
+}
+.main h2{
+	padding: 10px 0;
+}
+.aside{
+	margin-left: -122px;
+	width: 120px;
+	padding: 10px 0;
+	background: #fff;
+}
+.aside img{
+	width: 78px;
+	height: 78px;
+	margin:10px 20px;
+}
+.clearfix:after{
+	content: ".";
+	visibility: hidden;
+	display: block;
+	height: 0;
+	clear: both;
+}
+.clearfix{
+	zoom: 1;
+}
