@@ -50,8 +50,8 @@ body{height: 100%;}
 }
 .sub span{
 	float: left;
-	width: 40px;
-	margin: 19px;
+	width: 70px;
+	margin-top: 19px;
 }
 .main{
 	padding: 0;
