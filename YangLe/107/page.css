@@ -190,12 +190,14 @@ body {
     margin-top: 50px;
 }
 
-.bannerForm .formComponent,
+.bannerD .bannerForm select,
 .bannerD .bannerForm button {
     height: 37px;
     width: 236px;
     display: inline-block;
     margin: 0 10px;
+    outline: none;
+    border: none;
 }
 
 .bannerD .bannerForm input {
@@ -228,7 +230,11 @@ body {
     border: 1px solid #C78172;
 }
 
-.bannerForm ul.selectList li {
+.bannerForm select option:disabled{
+    display: none;
+}
+
+.bannerForm select option {
     height: 26px;
     font: normal 12px "微软雅黑";
     text-align: left;
