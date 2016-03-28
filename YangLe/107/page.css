@@ -1,6 +1,6 @@
 body {
     min-width: 1280px;
-    width: 1280px;
+    font-family: "微软雅黑",sans-serif;
 }
 
 /*-----   nav bar                    -----*/
@@ -29,7 +29,7 @@ body {
 #navList .navTag {
     padding: 14px 20px;
     height: 100%;
-    font: normal 14px '微软雅黑';
+    font: normal 14px normal;
     float: left;
     color: #888;
 }
@@ -52,7 +52,7 @@ body {
 .banner {
     position: relative;
     width: 100%;
-    height: 690px;
+    overflow: visible;
 }
 
 .bannerA {
@@ -61,23 +61,25 @@ body {
             src='img/bannerA.jpg',
             sizingMethod='image');
     background-size: cover;
+    height: 690px;
 }
 
 .bannerA .bannerContent {
     position: absolute;
     left: 9%;
     top: 225px;
+    width: 600px;
 }
 
 .bannerA .bannerContent .textA {
-    font: normal 400 60px '微软雅黑';
+    font: normal 400 60px normal;
     color: #FFF;
     line-height: 60px;
 }
 
 .bannerA .bannerContent .textB {
     margin-top: 18px;
-    font: normal 300 21px '微软雅黑';
+    font: normal 300 21px normal;
     line-height: 32px;
     color: #FFF;
     margin-left: 8px;
@@ -89,7 +91,7 @@ body {
     border: none;
     background-color: #E8504F;
     margin-top: 63px;
-    font: normal 300 30px '微软雅黑';
+    font: normal 300 30px normal;
     line-height: 32px;
     color: #FFF;
     margin-left: 10px;
@@ -99,6 +101,9 @@ body {
 }
 
 /*-----   banner B                   -----*/
+.bannerB {
+    height: 250px;
+}
 
 .bannerB .bannerTag {
     float: left;
@@ -119,17 +124,186 @@ body {
     border-right: none;
 }
 
-
-
 .bannerB .bannerTag .bannerTagContent p {
     display: block;
     height: 52px;
     margin: 0 auto;
     width: 160px;
-    font: normal 14px '微软雅黑';
+    font: normal 14px normal;
     color: #888;
     text-align: center;
     border: none;
 }
 
+/*-----   banner C                   -----*/
+.bannerC {
+    background-color: #EDEDED;
+    height: 360px;
+    padding-top: 90px;;
+}
 
+.bannerC .bannerImg {
+    text-align: center;
+}
+
+.bannerC .bannerContent {
+    text-align: center;
+    font: normal 54px '黑体';
+    color: #A1A1A1;
+    margin-top: 40px;
+}
+
+/*-----   banner D                   -----*/
+.bannerD {
+    background-image: url('img/bannerD.png');
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+            src='img/bannerA.jpg',
+            sizingMethod='img/bannerD.png');
+    background-size: cover;
+    height: 340px;
+    padding-top: 50px;
+}
+
+.bannerD .bannerTitle {
+    font: normal 300 21px normal;
+    color: #FFF;
+}
+
+.bannerD .bannerTitle:after {
+    display: block;
+    content: "";
+    width: 30px;
+    height: 3px;
+    background-color: #FFF;
+    margin: 7px auto 0 auto;
+}
+
+.bannerD .bannerText {
+    font: normal 300 12px normal;
+    color: #FFF;
+    margin-top: 20px;
+}
+
+/*-----   form format A              -----*/
+
+.bannerDForm {
+    margin-top: 50px;
+}
+
+.bannerDForm .formComponent,
+.bannerDForm button {
+    height: 37px;
+    width: 236px;
+    display: inline-block;
+    margin: 0 10px;
+    outline: none;
+    border: none;
+}
+
+.bannerDForm .formComponent input {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border: 10px solid #FFF;
+    color: #AAA;
+    padding-left: 10px;
+    background: #FFF url("img/bannerDSelect.png") no-repeat 200px 8px;
+    line-height: normal;
+    line-height: 2.4em\9;
+}
+
+.bannerDForm .selectList {
+    display: none;
+    list-style: none;
+    position: absolute;
+    z-index: 50;
+}
+
+.bannerDForm ul.selectList {
+    background-color: #E4E4E4;
+    width: 236px;
+}
+
+.bannerDForm input:focus,
+.bannerDForm input:focus + ul.selectList {
+    display: block;
+    outline: 1px solid #C78172;
+}
+
+.bannerDForm ul.selectList li {
+    height: 26px;
+    font: normal 12px normal;
+    text-align: left;
+    padding: 5px 30px;
+    color: #323333;
+}
+
+.bannerDForm input:focus + ul.selectList li:hover {
+    color: #FFF;
+    background-color: #BF4E48;
+}
+
+.bannerDForm input:focus + ul.selectList li:hover:before {
+    content: "";
+    height: 8px;
+    width: 12px;
+    background-image: url("img/bannerDFormCheck.png");
+    float: left;
+    margin-left: -22px;
+    margin-top: 4px;
+}
+
+.bannerDForm .formBtn{
+    background-color: #BF4E48;
+    font: normal 14px normal;
+    line-height: 12px;
+    color:#FFF;
+    letter-spacing: 25px;
+    padding-left:25px;
+}
+
+
+/*-----   banner E                   -----*/
+.bannerE{
+    background-color: #F7F7F7;
+    height: 605px;
+    padding-top: 100px;
+    text-align: center;
+}
+
+.bannerE .bannerContent{
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.bannerE .bannerItem{
+    width: auto;
+    float:left;
+    margin:0 18px;
+}
+
+
+.bannerE .bannerItem .bannerImg{
+    padding: 12px 8px;
+    background-color: #FFF;
+    border:1px solid #D3D3D3;
+}
+.bannerE .bannerItemText .textA{
+    font-size: 14px;
+    line-height: 30px;
+    color: #373737;
+}
+
+.bannerE .bannerItemText .textB{
+    font-size: 12px;
+    color: #888;
+    padding-bottom: 5px;
+}
+
+.bannerE .bannerItem.active .bannerItemText .textA{
+    font-size: 22px;
+    text-justify:distribute-all-lines;/*ie6-8*/
+    text-align-last:justify;/* ie9*/
+    width: 200px;
+    margin: auto;
+}
