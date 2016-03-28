@@ -52,7 +52,7 @@ body {
 .banner {
     position: relative;
     width: 100%;
-    height: 690px;
+    overflow: visible;
 }
 
 .bannerA {
@@ -61,12 +61,14 @@ body {
             src='img/bannerA.jpg',
             sizingMethod='image');
     background-size: cover;
+    height: 690px;
 }
 
 .bannerA .bannerContent {
     position: absolute;
     left: 9%;
     top: 225px;
+    width: 600px;
 }
 
 .bannerA .bannerContent .textA {
@@ -99,6 +101,9 @@ body {
 }
 
 /*-----   banner B                   -----*/
+.bannerB {
+    height: 250px;
+}
 
 .bannerB .bannerTag {
     float: left;
@@ -119,8 +124,6 @@ body {
     border-right: none;
 }
 
-
-
 .bannerB .bannerTag .bannerTagContent p {
     display: block;
     height: 52px;
@@ -132,4 +135,119 @@ body {
     border: none;
 }
 
+/*-----   banner C                   -----*/
+.bannerC {
+    background-color: #EDEDED;
+    height: 360px;
+    padding-top: 90px;;
+}
+
+.bannerC .bannerImg {
+    text-align: center;
+}
+
+.bannerC .bannerContent {
+    text-align: center;
+    font: normal 54px '黑体';
+    color: #A1A1A1;
+    margin-top: 40px;
+}
+
+/*-----   banner D                   -----*/
+.bannerD {
+    background-image: url('img/bannerD.png');
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+            src='img/bannerA.jpg',
+            sizingMethod='img/bannerD.png');
+    background-size: cover;
+    height: 340px;
+    padding-top: 50px;
+}
+
+.bannerD .bannerTitle {
+    font: normal 300 21px '微软雅黑';
+    color: #FFF;
+}
+
+.bannerD .bannerTitle:after {
+    display: block;
+    content: "";
+    width: 30px;
+    height: 3px;
+    background-color: #FFF;
+    margin: 7px auto 0 auto;
+}
+
+.bannerD .bannerText {
+    font: normal 300 12px '微软雅黑';
+    color: #FFF;
+    margin-top: 20px;
+}
+
+/*-----   form format A              -----*/
+
+.bannerD .bannerForm {
+    margin-top: 50px;
+}
+
+.bannerForm .formComponent,
+.bannerD .bannerForm button {
+    height: 37px;
+    width: 236px;
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.bannerD .bannerForm input {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border: none;
+    color: #AAA;
+    padding-left: 10px;
+
+    background: #FFF url("img/bannerDSelect.png") no-repeat 200px 8px;
+}
+
+.bannerForm .selectList {
+    display: none;
+    list-style: none;
+    position: absolute;
+}
+
+.bannerForm ul.selectList {
+    background-color: #E4E4E4;
+    width: 236px;
+}
+
+.bannerForm input:focus,
+.bannerForm input:focus + ul.selectList {
+
+    display: block;
+    outline: none;
+    border: 1px solid #C78172;
+}
+
+.bannerForm ul.selectList li {
+    height: 26px;
+    font: normal 12px "微软雅黑";
+    text-align: left;
+    padding: 5px 30px;
+    color: #323333;
+}
+
+.bannerForm input:focus + ul.selectList li:hover {
+    color: #FFF;
+    background-color: #BF4E48;
+}
+
+.bannerForm input:focus + ul.selectList li:hover:before {
+    content: "";
+    height: 8px;
+    width: 12px;
+    background-image: url("img/bannerDFormCheck.png");
+    float: left;
+    margin-left: -22px;
+    margin-top: 4px;
+}
 
