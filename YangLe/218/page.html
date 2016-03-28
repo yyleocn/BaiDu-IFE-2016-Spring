@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务十八：基础JavaScript练习（一）</title>
+    <style type="text/css">
+        .numBox {
+            display: inline-block;
+            text-align: center;
+            padding: 5px 0;
+            margin: 5px;
+            width: 100px;
+            background-color: #F00;
+        }
+
+        .numBox:hover {
+            cursor: pointer;
+            background-color: #00F;
+        }
+    </style>
+</head>
+<body>
+<div class="formGroup">
+    <label><input type="text" name="num"></label>&emsp;
+    <button type="button" id="leftIn">左侧入</button>&emsp;
+    <button type="button" id="rightIn">右侧入</button>&emsp;
+    <button type="button" id="leftOut">左侧出</button>&emsp;
+    <button type="button" id="rightOut">右侧出</button>
+</div>
+<div id="numQueue"></div>
+<script src="task.js" type="text/javascript"></script>
+</body>
+</html>
