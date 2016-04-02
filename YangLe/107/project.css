@@ -1,6 +1,4 @@
 body {
-    margin-top:-1500px;
-    width: 1280px;
     overflow: auto;
 }
 
@@ -329,14 +327,15 @@ body {
     background-color: #FFF;
 }
 
-.bgZhihuBlue{
+.bgZhihuBlue {
     background-color: #1892F5;
 }
 
+
 /*-----  form              -----*/
-form .inputNote{
-    color:#CCC;
-    font-size:0.8em;
+form .inputNote {
+    color: #CCC;
+    font-size: 0.8em;
     margin: 2px;
 }
 
