@@ -1,6 +1,6 @@
 body {
     min-width: 1280px;
-    font-family: "微软雅黑",sans-serif;
+    font-family: "微软雅黑", sans-serif;
 }
 
 /*-----   nav bar                    -----*/
@@ -8,7 +8,6 @@ body {
     position: relative;
     width: 100%;
     height: 57px;
-    /*background-color: #DDD;*/
 }
 
 #logo {
@@ -32,6 +31,7 @@ body {
     font: normal 14px normal;
     float: left;
     color: #888;
+    cursor: pointer;
 }
 
 #navList .navTag.login,
@@ -52,7 +52,7 @@ body {
 .banner {
     position: relative;
     width: 100%;
-    overflow: visible;
+    overflow: auto;
 }
 
 .bannerA {
@@ -154,6 +154,10 @@ body {
 }
 
 /*-----   banner D                   -----*/
+.banner.bannerD{
+    overflow: visible;
+}
+
 .bannerD {
     background-image: url('img/bannerD.png');
     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
@@ -201,15 +205,14 @@ body {
 }
 
 .bannerDForm .formComponent input {
-    position: relative;
     height: 100%;
     width: 100%;
-    border: 10px solid #FFF;
     color: #AAA;
     padding-left: 10px;
+    border: none;
     background: #FFF url("img/bannerDSelect.png") no-repeat 200px 8px;
     line-height: normal;
-    line-height: 2.4em\9;
+    line-height: 2.4em \9;
 }
 
 .bannerDForm .selectList {
@@ -224,10 +227,18 @@ body {
     width: 236px;
 }
 
-.bannerDForm input:focus,
+.bannerDForm input:focus {
+    height: 37px;
+}
+
 .bannerDForm input:focus + ul.selectList {
     display: block;
-    outline: 1px solid #C78172;
+}
+
+.bannerDForm input:focus,
+.bannerDForm input:focus + ul.selectList {
+    outline: none;
+    border: 2px solid #C78172;
 }
 
 .bannerDForm ul.selectList li {
@@ -253,57 +264,463 @@ body {
     margin-top: 4px;
 }
 
-.bannerDForm .formBtn{
+.bannerDForm .formBtn {
     background-color: #BF4E48;
     font: normal 14px normal;
     line-height: 12px;
-    color:#FFF;
+    color: #FFF;
     letter-spacing: 25px;
-    padding-left:25px;
+    padding-left: 25px;
 }
 
-
 /*-----   banner E                   -----*/
-.bannerE{
+.bannerE {
     background-color: #F7F7F7;
     height: 605px;
     padding-top: 100px;
     text-align: center;
 }
 
-.bannerE .bannerContent{
+.bannerE .bannerContent {
     display: inline-block;
     margin: 0 auto;
 }
 
-.bannerE .bannerItem{
+.bannerE .bannerItem {
     width: auto;
-    float:left;
-    margin:0 18px;
+    float: left;
+    margin: 0 18px;
 }
 
-
-.bannerE .bannerItem .bannerImg{
+.bannerE .bannerItem .bannerImg {
     padding: 12px 8px;
     background-color: #FFF;
-    border:1px solid #D3D3D3;
+    border: 1px solid #D3D3D3;
 }
-.bannerE .bannerItemText .textA{
+
+.bannerE .bannerItemText .textA {
     font-size: 14px;
     line-height: 30px;
     color: #373737;
 }
 
-.bannerE .bannerItemText .textB{
+.bannerE .bannerItemText .textB {
     font-size: 12px;
     color: #888;
     padding-bottom: 5px;
 }
 
-.bannerE .bannerItem.active .bannerItemText .textA{
+.bannerE .bannerItem.active .bannerItemText .textA {
     font-size: 22px;
-    text-justify:distribute-all-lines;/*ie6-8*/
-    text-align-last:justify;/* ie9*/
+    text-justify: distribute-all-lines; /*ie6-8*/
+    text-align-last: justify; /* ie9*/
     width: 200px;
     margin: auto;
+}
+
+/*-----   banner F                   -----*/
+.bannerF {
+    height: 566px;
+}
+
+.bannerF .bannerLeft {
+    position: relative;
+    width: 66.6%;
+    height: 100%;
+    float: left;
+    background-image: url('img/bannerF.png');
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+            src='img/bannerA.jpg',
+            sizingMethod='img/bannerF.png');
+    background-size: cover;
+    color: #FFF;
+}
+
+.bannerF .bannerLeft .textA {
+    margin-top: 130px;
+    display: inline-block;
+    font-size: 50px;
+    line-height: 45px;
+}
+
+.bannerF .bannerLeft .textB {
+    display: inline-block;
+    font-size: 158px;
+    line-height: 140px;
+}
+
+.bannerF .bannerLeft .textC {
+    display: inline-block;
+    text-align: left;
+    width: auto;
+    font-size: 22px;
+    line-height: 45px;
+    margin-top: 20px;
+}
+
+.bannerF .bannerLeft .leftTriangle {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-right: 24px solid #FFF;
+    border-bottom: 15px solid transparent;
+    margin-top: -12px;
+}
+
+.bannerF .bannerRight {
+    margin-left: 66.6%;
+    margin-right: 0;
+    height: 100%;
+    padding-top: 160px;
+}
+
+.bannerF .bannerRight .textA {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "微软雅黑 Light", sans-serif;
+}
+
+.bannerF .bannerRight .textB {
+    text-align: left;
+    margin: 20px auto 0 auto;
+    font-size: 12px;
+    color: #AAA;
+    line-height: 30px;
+    width: 290px;
+}
+
+.bannerF .bannerRight .textA span {
+    color: #EA5551;
+}
+
+.bannerF .bannerRight .moreInfoBtn {
+    border: 1px solid #E25C60;
+    color: #E25C60;
+    background-color: #FFF;
+    margin-top: 40px;
+    padding: 9px 25px;
+    cursor: pointer;
+}
+
+.bannerF .bannerRight .slideShowBar {
+    margin-top: 20px;
+}
+
+.bannerF .bannerRight .slideShowPoint {
+    cursor: pointer;
+    display: inline-block;
+    height: 11px;
+    width: 11px;
+    border: 1px solid #929292;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+.bannerF .bannerRight .slideShowPoint.active {
+    background-color: #929292;
+}
+
+/*-----   banner G                   -----*/
+.bannerG {
+    height: 520px;
+}
+
+.bannerG .bannerLeft,
+.bannerG .bannerCenter {
+    width: 33.3%;
+    height: 100%;
+    float: left;
+}
+
+.bannerG .bannerLeft {
+    background-color: #E8504F;
+    color: #FFF;
+}
+
+.bannerG .textA {
+    padding-top: 168px;
+    font-size: 19px;
+    line-height: 30px;
+    font-weight: 600;
+    font-family: "微软雅黑 Light", sans-serif;
+    letter-spacing: 2px;
+}
+
+.bannerG .textA:after {
+    display: block;
+    content: '';
+    border-bottom: 2px solid #A8A8A8;
+    margin: 20px auto;
+    width: 30px;
+}
+
+.bannerG .bannerLeft .textA:after {
+    border-bottom-color: #FFF;
+}
+
+.bannerG .viewMoreBtn {
+    margin-top: 5px;
+    padding: 8px 40px;
+    background: none;
+    border: 1px solid #E8504F;
+    color: #E8504F;
+    font-weight: 600;
+    font-size: 20px;
+    font-family: "微软雅黑 Light", sans-serif;
+    letter-spacing: 2px;
+}
+
+.bannerG .bannerLeft .viewMoreBtn {
+    color: #FFF;
+    border-color: #FFF;
+}
+
+.bannerG .bannerRight {
+    position: relative;
+    margin-left: 66.6%;
+    margin-right: 0;
+    height: 100%;
+    background-image: url('img/bannerG.png');
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+            src='img/bannerA.jpg',
+            sizingMethod='img/bannerG.png');
+    background-size: cover;
+}
+
+.bannerG .bannerRight .rightTriangle {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-left: 24px solid #FFF;
+    border-bottom: 15px solid transparent;
+    margin-top: -12px;
+}
+
+/*-----   banner H                   -----*/
+.bannerH{
+    height: 750px;
+}
+.bannerH .bannerContent {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.bannerH .bannerTitle {
+    padding-top: 118px;
+    padding-bottom: 105px;
+    text-align: center;
+}
+
+.bannerH .bannerTitle .textA {
+    font-size: 21px;
+    font-family: "黑体", sans-serif;
+}
+
+.bannerH .bannerTitle .textA:after {
+    display: block;
+    content: '';
+    border-bottom: 2px solid #E44F4B;
+    margin: 7px auto;
+    width: 30px;
+}
+
+.bannerH .bannerTitle .textB {
+    font-size: 12px;
+    color: #AAA;
+    margin-top: 12px;
+    line-height: 18px;
+}
+
+.bannerH .bannerLeft {
+    width: 290px;
+    float: left;
+}
+
+.bannerH .bannerLeft .textA {
+    font-size: 14px;
+    font-family: "黑体", sans-serif;
+}
+
+.bannerH .bannerLeft .textB{
+
+    margin-top: 25px;
+}
+.bannerH .bannerLeft .textB,
+.bannerH .bannerLeft .viewMore {
+    line-height: 20px;
+    font-size: 12px;
+    font-size-adjust: 0.7;
+    /*font-family: "宋体", sans-serif;*/
+}
+
+.bannerH .bannerLeft .viewMore {
+    text-align: right;
+    margin-bottom: 30px;
+}
+.bannerH .bannerLeft .viewMore:before {
+    display: inline-block;
+    content: "";
+    width: 10px;
+    height: 6px;
+    background-image: url("img/bannerGExpand.png");
+    margin-right: 5px;
+}
+
+.bannerH .bannerRight {
+    width: 640px;
+    float: right;
+}
+
+.bannerH .bannerHForm input,
+.bannerH .bannerHForm textarea,
+.bannerH .bannerHForm button{
+    border: none;
+    background-color: #EDEDEF;
+    padding:0 16px;
+    font-size: 12px;
+    color:#231815;
+    margin-bottom: 14px;
+}
+
+
+.bannerH .bannerHForm input{
+    width: 310px;
+    height: 40px;
+}
+
+.bannerH .bannerHForm input:nth-child(even){
+    float: left;
+}
+.bannerH .bannerHForm input:nth-child(odd){
+    float: right;
+}
+
+
+.bannerH .bannerHForm textarea{
+    width: 100%;
+    padding-top:10px;
+    height: 120px;
+}
+
+.bannerH .bannerHForm button{
+    font-size: 14px;
+    font-family: "黑体", sans-serif;
+    width: 100%;
+    line-height: 40px;
+    margin-top:-5px;
+    cursor: pointer;
+}
+
+/*-----   banner I                   -----*/
+.bannerI {
+    background-color: #33363F;
+    color:#FFF;
+    height: 360px;
+}
+
+.bannerI .textA{
+    font-size: 21px;
+    font-family: "黑体", sans-serif;
+    margin-top:90px;
+}
+.bannerI .textB{
+    font-size: 12px;
+    line-height: 20px;
+    /*font-size-adjust: 0.5;*/
+    margin-top:5px;
+    margin-bottom: 25px;
+    font-family: "宋体", sans-serif;
+}
+
+
+.bannerI .emailBar{
+    height: 40px;
+    width: 510px;
+    margin:0 auto;
+}
+
+.bannerI .emailBar input{
+    display: block;
+    height: 100%;
+    width: 430px;
+    border:none;
+    float: left;
+    padding-left: 10px;
+    font-size:14px;
+}
+
+.bannerI .emailBar button{
+    display: block;
+    height: 100%;
+    width: 80px;
+    border:none;
+    background-color: #717179;
+    color:#FFF;
+    font-size: 15px;
+    letter-spacing: 10px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.banner .icoBar{
+    margin-top:35px;
+}
+
+.banner .icoBar .ico{
+    margin:0 10px;
+    display: inline-block;
+    cursor: pointer;
+}
+.banner .icoBar .icoQQ{
+    background-image: url("img/bannerIQQ.png");
+    width:24px;
+    height: 25px;
+}
+.banner .icoBar .icoWeibo{
+    background-image: url("img/bannerIWeibo.png");
+    width:29px;
+    height: 25px;
+}
+.banner .icoBar .icoTwitter{
+    background-image: url("img/bannerITwitter.png");
+    width:29px;
+    height: 25px;
+}
+.banner .icoBar .icoInternet{
+    background-image: url("img/bannerIInternet.png");
+    width:24px;
+    height: 25px;
+}
+
+
+
+/*-----   banner bottom              -----*/
+.bannerBottom{
+    height: 55px;
+    background-color: #30303A;
+    color: #FFF;
+}
+
+.bannerBottom .bannerLeft,
+.bannerBottom .bannerRight{
+    font-size: 12px;
+    font-family: "宋体", sans-serif;
+    font-size-adjust: 0.5;
+    margin-top:27px;
+}
+
+.bannerBottom .bannerLeft{
+    float: left;
+    padding-left: 100px;
+}
+
+.bannerBottom .bannerRight{
+    float: right;
+    padding-right: 40px;
 }
