@@ -1,7 +1,8 @@
-var addEvent = function (obj_, eventType_, fn_) {
+"use strict";
+var addEvent = function (obj_, eventType_, func_) {
     var args = Array.prototype.slice.call(arguments, 3);
     var cfn = function (eventObj_) {
-        fn_.apply(obj_, [eventObj_].concat(args));
+        func_.apply(obj_, [eventObj_].concat(args));
     };
     if (obj_.addEventListener) {
         obj_.addEventListener(eventType_, cfn, false);
@@ -12,10 +13,28 @@ var addEvent = function (obj_, eventType_, fn_) {
     }
 };
 
-var setTimeoutLoop = function(  ){
+var dateBase = new Date();
 
+var printArgs = function () {
+    console.log(arguments);
+    console.log(new Date() - dateBase);
 };
 
+var setTimeoutLoop = function (start_, end_, delay_, func_) {
+    var args = Array.prototype.slice.call(arguments, 4);
+    var cfn = function (args_) {
+        func_.apply(null, [args_].concat(args));
+    };
+    var loopI = start_;
+    (function factorial() {
+        if (loopI >= end_) {
+            return null;
+        }
+        cfn(loopI);
+        loopI++;
+        window.setTimeout(factorial, delay_);
+    })();
+};
 
 
 function init() {
@@ -33,28 +52,49 @@ function init() {
         return null;
     }
 
-    function numBoxRemove(numBox_) {
+    var msgInsert = function (msg_, insertPos_) {
+        if (!insertPos_) {
+            console.log('对象错误');
+            return null;
+        }
+        var msgBox = document.createElement('div');
+        msgBox.innerHTML = msg_;
+        addEvent(
+            msgBox,
+            'click',
+            function () {
+                console.log(this.innerHTML);
+                this.parentNode.removeChild(this);
+            }
+        );
+        insertPos_.appendChild(msgBox);
+    };
+
+    var numBoxRemove = function (numBox_) {
         if (!numBox_) {
             console.log('对象错误');
             return null;
         }
-        alert(numBox_.innerText);
+        msgInsert(numBox_.innerText, msgList);
         numBox_.parentNode.removeChild(numBox_);
         return null;
-    }
+    };
 
-    function numBoxInsert(num_, insertPos_, direction_) {
-        var numBoxList= insertPos_.querySelectorAll('div');
-        if(numBoxList.length>=60){
-            alert('最多60个数字！');
+    var numBoxInsert = function (num_, insertPos_, direction_) {
+        var numBoxList = insertPos_.querySelectorAll('div');
+        if (numBoxList.length >= 60) {
+            msgInsert('最多60个数字！', msgList);
             return null;
         }
         var numBox = document.createElement('div');
         numBox.className = 'numBox';
-        numBox.innerHTML = num_;
+        numBox.style.height = num_ + '%';
+        numBox.dataNum = num_;
+        //numBox.innerHTML = num_;
         addEvent(numBox, 'click', function () {
             numBoxRemove(this);
         });
+        console.log([numBox]);
         if (direction_ === 'right') {
             insertPos_.appendChild(numBox);
             return null;
@@ -67,17 +107,23 @@ function init() {
             insertPos_.insertBefore(numBox, numBoxFirst);
         }
         return null;
-    }
+    };
 
-    function randomNumBtnEvent(event_, insertPos_) {
-        for(var loopI=0; loopI<20; loopI++){
-            var num = parseInt(Math.random()*90+10);
-            numBoxInsert(num,insertPos_);
+    var randomNumBtnEvent = function (event_, insertPos_) {
+        var numBoxList = insertPos_.querySelectorAll('div');
+        if (numBoxList.length >= 60) {
+            msgInsert('最多60个数字！', msgList);
+            return null;
+        }
+        var insertCount = 60 - numBoxList.length < 20 ? 60 - numBoxList.length : 20;
+        for (var loopI = 0; loopI < insertCount; loopI++) {
+            var num = parseInt(Math.random() * 90 + 10);
+            numBoxInsert(num, insertPos_);
         }
         return null;
-    }
+    };
 
-    function insertBtnEvent(event_, numInput_, insertPos_, direction_) {
+    var insertBtnEvent = function (event_, numInput_, insertPos_, direction_) {
         if (!numInput_ || !insertPos_) {
             console.log('对象错误');
             return null;
@@ -86,21 +132,21 @@ function init() {
         var numStr = numInput_.value.trim();
         var numberRegex = /\d+/;
         if (!numberRegex.test(numStr) || numberRegex.exec(numStr)[0] !== numStr) {
-            alert('不要输入其他字符');
+            msgInsert('不要输入其他字符', msgList);
             return null;
         }
 
         var num = parseInt(numStr);
         if (num < 10 || num > 100) {
-            alert('请输入10-100之间的数字');
+            msgInsert('请输入10-100之间的数字', msgList);
             return null;
         }
         numBoxInsert(
             num, insertPos_, direction_
         )
-    }
+    };
 
-    function numPop(event_, direction_, numQueue_) {
+    var numPop = function (event_, numQueue_, direction_) {
         if (!numQueue_) {
             console.log('对象错误');
             return null;
@@ -108,7 +154,7 @@ function init() {
         var numBoxList = numQueue_.querySelectorAll('div.numBox');
         var numBox = null;
         if (!numBoxList.length) {
-            alert('队列中无数字');
+            msgInsert('队列中无数字', msgList);
             return null;
         }
         if (direction_ === 'left') {
@@ -116,12 +162,25 @@ function init() {
         } else if (direction_ === 'right') {
             numBox = numBoxList[numBoxList.length - 1];
         } else {
-            alert('数据错误');
+            msgInsert('数据错误', msgList);
             return null;
         }
+        msgInsert(numBox.dataNum, msgList);
         numBoxRemove(numBox);
         return null;
-    }
+    };
+
+    var bubbleSortCompare = function(){
+
+    };
+
+    var bubbleSortFlash = function(numQueue_){
+        var numList = numQueue_.querySelectorAll('div');
+        if(numList.length<2){
+            return null;
+        }
+    };
+
 
     addEvent(rightInBtn, 'click', insertBtnEvent, numInput, numQueue, 'right');
     addEvent(leftInBtn, 'click', insertBtnEvent, numInput, numQueue, 'left');

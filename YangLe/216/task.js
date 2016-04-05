@@ -1,3 +1,25 @@
+if (!String.prototype.trim) {
+    String.prototype.trim = function () {
+        return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+    };
+}
+
+if (!Array.prototype.forEach) {
+    console.log('forEach Add');
+    Array.prototype.forEach = function (fun_ /*, thisp*/) {
+        var len = this.length;
+        if (typeof fun_ != "function")
+            throw new TypeError();
+        var thisp = arguments[1];
+        for (var i = 0; i < len; i++) {
+            if (i in this)
+                fun_.call(thisp, this[i], i, this);
+        }
+    };
+}
+
+var testObj;
+
 /**
  * aqiData，存储用户输入的空气指数数据
  * 示例格式：
@@ -9,30 +31,22 @@
 var aqiData = {};
 
 //----------event绑定
-var addEvent = function(obj$,eventType$,fn$){
+var addEvent = function (obj$, eventType$, fn$) {
     var args = Array.prototype.slice.call(arguments, 3);
-    var cfn = function(eventObj$){
-        fn$.apply(obj$,[eventObj$].concat(args));
+    var cfn = function (eventObj$) {
+        fn$.apply(obj$, [eventObj$].concat(args));
     };
-    if(obj$.addEventListener){
-        obj$.addEventListener(eventType$,cfn,false);
-    }else if(obj$.attachEvent){
-        obj$.attachEvent('on'+eventType$,cfn);
-    }else{
-        obj$['on'+eventType$] = cfn;
+    if (obj$.addEventListener) {
+        obj$.addEventListener(eventType$, cfn, false);
+    } else if (obj$.attachEvent) {
+        obj$.attachEvent('on' + eventType$, cfn);
+    } else {
+        obj$['on' + eventType$] = cfn;
     }
 };
 
 
-//function addEvent(obj$, event$, fn$) {
-//    (obj$.attachEvent) ?//ie
-//        obj$.attachEvent('on' + event$, function () {
-//            fn$.call(obj$);
-//        }) :
-//        obj$.addEventListener(event$, fn$, 0);
-//}
-
-function logError(err$){
+function logError(err$) {
     console.log(err$);
     return undefined;
 }
@@ -56,7 +70,7 @@ function addAqiData() {
         return undefined;
     }
     //判断下城市是否存在
-    if(aqiData[cityStr]){
+    if (aqiData[cityStr]) {
         alert('城市已存在！');
         return undefined;
     }
@@ -76,11 +90,11 @@ function addAqiData() {
  */
 function renderAqiList() {
     var AQITable = document.querySelector('table#aqi-table');
-    if(!AQITable){
+    if (!AQITable) {
         return logError('组件错误');
     }
-    AQITable.innerHTML='';
-    for( var cityName$ in aqiData){
+    var trArray = AQITable.querySelectorAll('tr');
+    for (var cityName$ in aqiData) {
         var tableRow = document.createElement('tr');
 
         var cityBox = document.createElement('td');
@@ -94,7 +108,7 @@ function renderAqiList() {
         var btnBox = document.createElement('td');
         var deleteBtn = document.createElement('button');
         deleteBtn.innerHTML = '删除';
-        addEvent(deleteBtn,'click',delBtnHandle,cityName$);
+        addEvent(deleteBtn, 'click', delBtnHandle, cityName$);
         btnBox.appendChild(deleteBtn);
         tableRow.appendChild(btnBox);
 
@@ -115,8 +129,8 @@ function addBtnHandle() {
  * 点击各个删除按钮的时候的处理逻辑
  * 获取哪个城市数据被删，删除数据，更新表格显示
  */
-function delBtnHandle(event$,cityName$) {
-    if(!aqiData.hasOwnProperty(cityName$)){
+function delBtnHandle(event$, cityName$) {
+    if (!aqiData.hasOwnProperty(cityName$)) {
         alert('数据错误！');
         return undefined;
     }
