@@ -73,7 +73,6 @@ function init() {
             console.log('对象错误');
             return null;
         }
-        msgInsert(numBox_.dataNum, msgList);
         numBox_.parentNode.removeChild(numBox_);
         return null;
     };
@@ -112,7 +111,7 @@ function init() {
             msgInsert('最多60个数字！', msgList);
             return null;
         }
-        var insertCount = 60 - numBoxList.length < 20 ? 60 - numBoxList.length : 20;
+        var insertCount = 60 - numBoxList.length < 10 ? 60 - numBoxList.length : 10;
         for (var loopI = 0; loopI < insertCount; loopI++) {
             var num = parseInt(Math.random() * 90 + 10);
             numBoxInsert(num, insertPos_);
@@ -238,16 +237,16 @@ function init() {
                 nodeB = nodeB.nextSibling;
             } else {
                 nodeA = nodeA.nextSibling;
-                nodeB = nodeA.nextSibling;
-                if (!nodeB.nextSibling) {
-                    msgInsert('Done! Total ' + loopCount + ' steps.', msgList);
+                if (!nodeA.nextSibling) {
+                    msgInsert('Done! Total ' + loopCount + 'steps,' + (new Date() - startTime) + 'ms.', msgList);
                     return null;
                 }
+                nodeB = nodeA.nextSibling;
             }
             nodeA.style.backgroundColor = '#0F0';
             nodeB.style.backgroundColor = '#0F0';
             //console.log('timeCost' + (new Date() - startTime));
-            setTimeout(bubbleSortAction, 30);
+            setTimeout(bubbleSortAction, 5);
         })();
     };
     addEvent(rightInBtn, 'click', insertBtnEvent, numInput, numQueue, 'right');
