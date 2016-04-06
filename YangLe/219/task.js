@@ -85,7 +85,7 @@ function init() {
         }
         var numBox = document.createElement('div');
         numBox.className = 'numBox';
-        numBox.style.height = num_ + '%';
+        numBox.style.height = num_*2 + 'px';
         numBox.dataNum = num_;
         //numBox.innerHTML = num_;
         addEvent(numBox, 'click', function () {
