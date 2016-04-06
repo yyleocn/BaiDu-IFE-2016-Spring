@@ -12,21 +12,27 @@
 
 <script type="text/javascript">
 
-    function addEvent(obj$, event$, fn$) {
-        (obj$.attachEvent) ?//ie
-                obj$.attachEvent('on' + event$, function () {
-                    fn$.call(obj$);
-                }) :
-                obj$.addEventListener(event$, fn$, 0);
-    }
+    var addEvent = function (obj$, eventType$, fn$) {
+        var args = Array.prototype.slice.call(arguments, 3);
+        var cfn = function (eventObj$) {
+            fn$.apply(obj$, [eventObj$].concat(args));
+        };
+        if (obj$.addEventListener) {
+            obj$.addEventListener(eventType$, cfn, false);
+        } else if (obj$.attachEvent) {
+            obj$.attachEvent('on' + eventType$, cfn);
+        } else {
+            obj$['on' + eventType$] = cfn;
+        }
+    };
 
     (function () {
         var buttonObj = document.querySelectorAll('button#button')[0];
         var displayObj = document.querySelectorAll('span#aqi-display')[0];
         var inputObj = document.querySelectorAll('input#aqi-input')[0];
-        addEvent( buttonObj, 'click', function(){
+        addEvent(buttonObj, 'click', function () {
             displayObj.innerHTML = inputObj.value;
-        } )
+        })
     })();
 
 </script>
