@@ -9,6 +9,15 @@
             overflow: auto;
             margin-top:10px;
         }
+        #msgList div{
+            display: inline-block;
+            background-color: #a2f493;
+            margin:5px;
+            padding:5px;
+        }
+        #msgList div:hover{
+            cursor:pointer;
+        }
         .numBox {
             display: inline-block;
             margin: 2px;
@@ -18,7 +27,7 @@
 
         .numBox:hover {
             cursor: pointer;
-            background-color: #00ff00;
+            background-color: #0F0;
         }
     </style>
 </head>
@@ -29,7 +38,8 @@
     <button type="button" id="rightIn">右侧入</button>&emsp;
     <button type="button" id="randomNum">随机20个数字</button>&emsp;
     <button type="button" id="leftOut">左侧出</button>&emsp;
-    <button type="button" id="rightOut">右侧出</button>
+    <button type="button" id="rightOut">右侧出</button>&emsp;
+    <button type="button" id="sortNum">排序！</button>
 </div>
 <div id="numQueue"></div>
 <div id="msgList"></div>

@@ -13,11 +13,9 @@ var addEvent = function (obj_, eventType_, func_) {
     }
 };
 
-var dateBase = new Date();
 
 var printArgs = function () {
     console.log(arguments);
-    console.log(new Date() - dateBase);
 };
 
 var setTimeoutLoop = function (start_, end_, delay_, func_) {
@@ -46,6 +44,7 @@ function init() {
     var leftOutBtn = document.querySelector('button#leftOut');
     var rightOutBtn = document.querySelector('button#rightOut');
     var randomNumBtn = document.querySelector('button#randomNum');
+    var sortNumBtn = document.querySelector('button#sortNum');
 
     if (!numQueue || !numInput || !leftInBtn || !rightInBtn || !leftOutBtn || !rightOutBtn) {
         console.log('初始化失败……');
@@ -63,7 +62,6 @@ function init() {
             msgBox,
             'click',
             function () {
-                console.log(this.innerHTML);
                 this.parentNode.removeChild(this);
             }
         );
@@ -75,7 +73,7 @@ function init() {
             console.log('对象错误');
             return null;
         }
-        msgInsert(numBox_.innerText, msgList);
+        msgInsert(numBox_.dataNum, msgList);
         numBox_.parentNode.removeChild(numBox_);
         return null;
     };
@@ -94,7 +92,6 @@ function init() {
         addEvent(numBox, 'click', function () {
             numBoxRemove(this);
         });
-        console.log([numBox]);
         if (direction_ === 'right') {
             insertPos_.appendChild(numBox);
             return null;
@@ -170,23 +167,95 @@ function init() {
         return null;
     };
 
-    var bubbleSortCompare = function(){
-
+    var swapDom = function (domA_, domB_, swapDom_) {
+        console.log(domA_.dataNum + '>' + domB_.dataNum);
+        var parentNodeA = domA_.parentNode;
+        var parentNodeB = domB_.parentNode;
+        parentNodeA.replaceChild(swapDom_, domA_);
+        parentNodeB.replaceChild(domA_, domB_);
+        parentNodeA.replaceChild(domB_, swapDom_);
     };
 
-    var bubbleSortFlash = function(numQueue_){
+    //var bubbleSortFlash = function (event_, numQueue_) {
+    //    var loopI = 0;
+    //    var loopJ = loopI + 1;
+    //    var loopLength = numQueue_.querySelectorAll('div').length;
+    //    var tempDom = document.createElement('div');
+    //    var startTime = new Date();
+    //    if (loopLength < 2) {
+    //        return null;
+    //    }
+    //    (function bubbleSortAction() {
+    //        //console.log(loopI + ',' + loopJ);
+    //        var numList = numQueue_.querySelectorAll('div');
+    //        numList[loopI].style.backgroundColor = '';
+    //        numList[loopJ].style.backgroundColor = '';
+    //        if (numList[loopI].dataNum > numList[loopJ].dataNum) {
+    //            swapDom(numList[loopI], numList[loopJ], tempDom);
+    //        }
+    //        console.log(numList[loopI].style.backgroundColor + numList[loopJ].style.backgroundColor);
+    //        loopJ++;
+    //        if (loopJ >= loopLength) {
+    //            loopI++;
+    //            loopJ = loopI + 1;
+    //            if (loopJ >= loopLength) {
+    //                msgInsert('Done!', msgList);
+    //                return null;
+    //            }
+    //        }
+    //        numList[loopI].style.backgroundColor = '#0F0';
+    //        numList[loopJ].style.backgroundColor = '#0F0';
+    //        console.log(numList[loopI].style.backgroundColor + numList[loopJ].style.backgroundColor);
+    //        //console.log('timeCost' + (new Date() - startTime));
+    //        setTimeout(bubbleSortAction, 50);
+    //    })();
+    //};
+
+    var bubbleSortFlash = function (event_, numQueue_) {
         var numList = numQueue_.querySelectorAll('div');
-        if(numList.length<2){
-            return null;
+        if (numList.length < 2) {
+            msgInsert('不用排序了吧', msgList);
         }
+        var nodeA = numList[0];
+        var nodeB = numList[1];
+        var swapNode = document.createElement('div');
+        var tempNode;
+        var startTime = new Date();
+        var loopCount = 0;
+        (function bubbleSortAction() {
+            nodeA.style.backgroundColor = '';
+            nodeB.style.backgroundColor = '';
+            loopCount++;
+            if (nodeA.dataNum > nodeB.dataNum) {
+                numQueue_.replaceChild(swapNode, nodeA);
+                numQueue_.replaceChild(nodeA, nodeB);
+                numQueue_.replaceChild(nodeB, swapNode);
+                tempNode = nodeA;
+                nodeA = nodeB;
+                nodeB = tempNode;
+            }
+            if (nodeB.nextSibling) {
+                nodeB = nodeB.nextSibling;
+            } else {
+                nodeA = nodeA.nextSibling;
+                nodeB = nodeA.nextSibling;
+                if (!nodeB.nextSibling) {
+                    msgInsert('Done! Total ' + loopCount + ' steps.', msgList);
+                    return null;
+                }
+            }
+            nodeA.style.backgroundColor = '#0F0';
+            nodeB.style.backgroundColor = '#0F0';
+            //console.log('timeCost' + (new Date() - startTime));
+            setTimeout(bubbleSortAction, 30);
+        })();
     };
-
-
     addEvent(rightInBtn, 'click', insertBtnEvent, numInput, numQueue, 'right');
     addEvent(leftInBtn, 'click', insertBtnEvent, numInput, numQueue, 'left');
     addEvent(randomNumBtn, 'click', randomNumBtnEvent, numQueue);
     addEvent(rightOutBtn, 'click', numPop, numQueue, 'right');
     addEvent(leftOutBtn, 'click', numPop, numQueue, 'left');
+    addEvent(sortNumBtn, 'click', bubbleSortFlash, numQueue);
 }
 
 
