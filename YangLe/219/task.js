@@ -37,6 +37,7 @@ var setTimeoutLoop = function (start_, end_, delay_, func_) {
 
 function init() {
     var numQueue = document.querySelector('div#numQueue');
+    var queueLength = 60;
     var msgList = document.querySelector('div#msgList');
     var numInput = document.querySelector('input[name=num]');
     var leftInBtn = document.querySelector('button#leftIn');
@@ -73,19 +74,20 @@ function init() {
             console.log('对象错误');
             return null;
         }
+        msgInsert(numBox_.dataNum, msgList);
         numBox_.parentNode.removeChild(numBox_);
         return null;
     };
 
     var numBoxInsert = function (num_, insertPos_, direction_) {
         var numBoxList = insertPos_.querySelectorAll('div');
-        if (numBoxList.length >= 60) {
-            msgInsert('最多60个数字！', msgList);
+        if (numBoxList.length >= queueLength) {
+            msgInsert('最多' + queueLength + '个数字！', msgList);
             return null;
         }
         var numBox = document.createElement('div');
         numBox.className = 'numBox';
-        numBox.style.height = num_*2 + 'px';
+        numBox.style.height = num_ * 5 + 'px';
         numBox.dataNum = num_;
         //numBox.innerHTML = num_;
         addEvent(numBox, 'click', function () {
@@ -106,12 +108,13 @@ function init() {
     };
 
     var randomNumBtnEvent = function (event_, insertPos_) {
+        var numCount = 10;
         var numBoxList = insertPos_.querySelectorAll('div');
-        if (numBoxList.length >= 60) {
-            msgInsert('最多60个数字！', msgList);
+        if (numBoxList.length >= queueLength) {
+            msgInsert('最多' + queueLength + '个数字！', msgList);
             return null;
         }
-        var insertCount = 60 - numBoxList.length < 10 ? 60 - numBoxList.length : 10;
+        var insertCount = queueLength - numBoxList.length < numCount ? queueLength - numBoxList.length : numCount;
         for (var loopI = 0; loopI < insertCount; loopI++) {
             var num = parseInt(Math.random() * 90 + 10);
             numBoxInsert(num, insertPos_);
@@ -126,9 +129,9 @@ function init() {
         }
 
         var numStr = numInput_.value.trim();
-        var numberRegex = /\d+/;
-        if (!numberRegex.test(numStr) || numberRegex.exec(numStr)[0] !== numStr) {
-            msgInsert('不要输入其他字符', msgList);
+        var numberErrRegex = /[^0-9]/;
+        if (!numStr || numberErrRegex.test(numStr)) {
+            msgInsert('请输入数字', msgList);
             return null;
         }
 
@@ -161,59 +164,19 @@ function init() {
             msgInsert('数据错误', msgList);
             return null;
         }
-        msgInsert(numBox.dataNum, msgList);
         numBoxRemove(numBox);
         return null;
     };
 
-    var swapDom = function (domA_, domB_, swapDom_) {
-        console.log(domA_.dataNum + '>' + domB_.dataNum);
-        var parentNodeA = domA_.parentNode;
-        var parentNodeB = domB_.parentNode;
-        parentNodeA.replaceChild(swapDom_, domA_);
-        parentNodeB.replaceChild(domA_, domB_);
-        parentNodeA.replaceChild(domB_, swapDom_);
-    };
-
-    //var bubbleSortFlash = function (event_, numQueue_) {
-    //    var loopI = 0;
-    //    var loopJ = loopI + 1;
-    //    var loopLength = numQueue_.querySelectorAll('div').length;
-    //    var tempDom = document.createElement('div');
-    //    var startTime = new Date();
-    //    if (loopLength < 2) {
-    //        return null;
-    //    }
-    //    (function bubbleSortAction() {
-    //        //console.log(loopI + ',' + loopJ);
-    //        var numList = numQueue_.querySelectorAll('div');
-    //        numList[loopI].style.backgroundColor = '';
-    //        numList[loopJ].style.backgroundColor = '';
-    //        if (numList[loopI].dataNum > numList[loopJ].dataNum) {
-    //            swapDom(numList[loopI], numList[loopJ], tempDom);
-    //        }
-    //        console.log(numList[loopI].style.backgroundColor + numList[loopJ].style.backgroundColor);
-    //        loopJ++;
-    //        if (loopJ >= loopLength) {
-    //            loopI++;
-    //            loopJ = loopI + 1;
-    //            if (loopJ >= loopLength) {
-    //                msgInsert('Done!', msgList);
-    //                return null;
-    //            }
-    //        }
-    //        numList[loopI].style.backgroundColor = '#0F0';
-    //        numList[loopJ].style.backgroundColor = '#0F0';
-    //        console.log(numList[loopI].style.backgroundColor + numList[loopJ].style.backgroundColor);
-    //        //console.log('timeCost' + (new Date() - startTime));
-    //        setTimeout(bubbleSortAction, 50);
-    //    })();
-    //};
-
-    var bubbleSortFlash = function (event_, numQueue_) {
+    var selectSortShow = function (event_, numQueue_) {
         var numList = numQueue_.querySelectorAll('div');
         if (numList.length < 2) {
             msgInsert('不用排序了吧', msgList);
+            return null;
+        }
+        var loopI;
+        for( loopI in numList){
+            console.log( loopI);
         }
         var nodeA = numList[0];
         var nodeB = numList[1];
@@ -221,40 +184,61 @@ function init() {
         var tempNode;
         var startTime = new Date();
         var loopCount = 0;
-        (function bubbleSortAction() {
-            nodeA.style.backgroundColor = '';
-            nodeB.style.backgroundColor = '';
+        var keepNode = nodeA;
+        nodeA.style.backgroundColor = "#00F";
+        (function selectSortAction() {
             loopCount++;
-            if (nodeA.dataNum > nodeB.dataNum) {
-                numQueue_.replaceChild(swapNode, nodeA);
-                numQueue_.replaceChild(nodeA, nodeB);
-                numQueue_.replaceChild(nodeB, swapNode);
-                tempNode = nodeA;
-                nodeA = nodeB;
-                nodeB = tempNode;
+            nodeB.style.backgroundColor = '';
+            if (keepNode.dataNum > nodeB.dataNum) {
+                if (!(nodeA === keepNode)) {
+                    keepNode.style.background = '';
+                }
+                keepNode = nodeB;
+                keepNode.style.background = '#00F';
             }
+
+            //循环到头
             if (nodeB.nextSibling) {
                 nodeB = nodeB.nextSibling;
             } else {
+                nodeA.style.backgroundColor = '';
+                keepNode.style.backgroundColor = '';
+
+                if (!(nodeA === keepNode)) {
+                    //根据需要交换DOM
+                    numQueue_.replaceChild(swapNode, nodeA);
+                    numQueue_.replaceChild(nodeA, keepNode);
+                    numQueue_.replaceChild(keepNode, swapNode);
+                    nodeA = keepNode;
+                }
+                nodeA.style.backgroundColor = '#700';
+                //换个颜色表示下
                 nodeA = nodeA.nextSibling;
+                //开始下一个
                 if (!nodeA.nextSibling) {
-                    msgInsert('Done! Total ' + loopCount + 'steps,' + (new Date() - startTime) + 'ms.', msgList);
+                    //没下一个就结束
+                    nodeA.style.backgroundColor = '#700';
+                    msgInsert('Done! Total ' + loopCount + ' steps,' + (new Date() - startTime) + ' ms.', msgList);
                     return null;
                 }
                 nodeB = nodeA.nextSibling;
+                keepNode = nodeA;
+                nodeA.style.backgroundColor = "#00F";
             }
-            nodeA.style.backgroundColor = '#0F0';
             nodeB.style.backgroundColor = '#0F0';
-            //console.log('timeCost' + (new Date() - startTime));
-            setTimeout(bubbleSortAction, 5);
+            //添个颜色表示下
+            setTimeout(selectSortAction, 50);
+            //延时执行下个循环
         })();
     };
+
+
     addEvent(rightInBtn, 'click', insertBtnEvent, numInput, numQueue, 'right');
     addEvent(leftInBtn, 'click', insertBtnEvent, numInput, numQueue, 'left');
     addEvent(randomNumBtn, 'click', randomNumBtnEvent, numQueue);
     addEvent(rightOutBtn, 'click', numPop, numQueue, 'right');
     addEvent(leftOutBtn, 'click', numPop, numQueue, 'left');
-    addEvent(sortNumBtn, 'click', bubbleSortFlash, numQueue);
+    addEvent(sortNumBtn, 'click', selectSortShow, numQueue);
 }
 
 
