@@ -3,27 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>基础JavaScript练习（二）</title>
+    <link href="project.css" rel="stylesheet" type="text/css">
     <style type="text/css">
-        #numQueue{
-            height: 205px;
-            overflow: auto;
-            margin-top:10px;
-            /*line-height: 210px;*/
+
+        #numQueue {
+            padding: 5px;
+            margin-top: 10px;
+            overflow: visible;
+            height: auto;
         }
-        #msgList div{
+
+        .verticalBottom {
+            height: 520px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .verticalBottom > * {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        #msgList div {
             display: inline-block;
             width: auto;
-            margin:5px;
+            margin: 5px;
             background-color: #a2f493;
-            padding:5px;
+            padding: 5px;
         }
-        #msgList div:hover{
-            cursor:pointer;
+
+        #msgList div:hover {
+            cursor: pointer;
         }
+
         .numBox {
             display: inline-block;
-            margin: auto 2px 0 0;
-            width: 10px;
+            margin-right: 2px;
+            width: 20px;
             background-color: #F00;
             overflow: visible;
         }
@@ -35,17 +53,21 @@
     </style>
 </head>
 <body>
-<div class="formGroup">
-    <label><input type="text" name="num"></label>&emsp;
-    <button type="button" id="leftIn">左侧入</button>&emsp;
-    <button type="button" id="rightIn">右侧入</button>&emsp;
-    <button type="button" id="randomNum">随机10个数字</button>&emsp;
-    <button type="button" id="leftOut">左侧出</button>&emsp;
-    <button type="button" id="rightOut">右侧出</button>&emsp;
-    <button type="button" id="sortNum">排序！</button>
+<div class="padding-lr-10px padding-tb-10px">
+    <div class="formGroup margin-tb-5px">
+        <label><input type="text" name="num"></label>&emsp;
+        <button type="button" id="leftIn">左侧入</button>&emsp;
+        <button type="button" id="rightIn">右侧入</button>&emsp;
+        <button type="button" id="randomNum">随机10个数字</button>&emsp;
+        <button type="button" id="leftOut">左侧出</button>&emsp;
+        <button type="button" id="rightOut">右侧出</button>&emsp;
+        <button type="button" id="sortNum">排序！</button>
+    </div>
+    <div class="verticalBottom margin-tb-5px bgDDD">
+        <div id="numQueue" class="textCenter"></div>
+    </div>
+    <div id="msgList"></div>
 </div>
-<div id="numQueue"></div>
-<div id="msgList"></div>
 <script src="task.js" type="text/javascript"></script>
 </body>
 </html>
